@@ -1,0 +1,67 @@
+
+# 1. Import Libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Make charts display inside the notebook
+%matplotlib inline
+
+# 2. Upload CSV File
+from google.colab import files
+uploaded = files.upload()
+
+# Replace 'your_file.csv' with your CSV file name after upload
+filename = list(uploaded.keys())[0]
+df = pd.read_csv(filename)
+
+# 3. Basic Data Overview
+print("Shape of DataFrame:", df.shape)
+print("\nFirst 5 Rows:")
+display(df.head())
+print("\nInfo:")
+display(df.info())
+print("\nSummary Statistics:")
+display(df.describe())
+
+# 4. Handling Missing Values
+print("\nMissing Values per Column:")
+print(df.isnull().sum())
+
+# 5. Example: Groupby Analysis
+# Change 'Category' and 'Revenue' to match your dataset column names
+if 'Category' in df.columns and 'Revenue' in df.columns:
+    category_sales = df.groupby('Category')['Revenue'].sum()
+    print("\nTotal Revenue by Category:")
+    print(category_sales)
+
+    # Plot Bar Chart
+    category_sales.plot(kind='bar', title='Revenue by Category', figsize=(8,5))
+    plt.ylabel('Total Revenue')
+    plt.show()
+
+# 6. Filtering Example
+# Example: filter rows where Revenue > 500
+if 'Revenue' in df.columns:
+    high_sales = df[df['Revenue'] > 500]
+    print("\nRows where Revenue > 500:")
+    display(high_sales)
+
+# 7. loc vs iloc Examples
+print("\nUsing loc (label-based indexing):")
+display(df.loc[0])  # First row by label
+print("\nUsing iloc (integer position-based indexing):")
+display(df.iloc[0]) # First row by position
+
+# 8. Head method example
+print("\nFirst 3 rows using .head(3):")
+display(df.head(3))
+
+# 9. Creating a Chart
+# Example: Quantity over time if Date & Quantity exist
+if 'Date' in df.columns and 'Quantity' in df.columns:
+    df['Date'] = pd.to_datetime(df['Date'])
+    df.groupby('Date')['Quantity'].sum().plot(kind='line', title='Quantity Sold Over Time', figsize=(10,5))
+    plt.ylabel('Total Quantity')
+    plt.show()
+
+
