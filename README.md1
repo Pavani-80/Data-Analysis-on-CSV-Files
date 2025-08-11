@@ -1,0 +1,71 @@
+# Data-Analysis-on-CSV-Files
+Analyze sales data using Python and Pandas to gain basic data insights and visualize sales trends.
+
+Tools Used:
+Python
+Pandas
+Matplotlib
+Google Colab (or Jupyter Notebook)
+
+Dataset
+File: sales_data.csv
+
+Columns:
+Order_ID – Unique ID for each order
+Date – Order date
+Category – Product category (e.g., Electronics, Clothing, Furniture)
+Quantity – Number of units sold
+Unit_Price – Price per unit (in currency units)
+Revenue – Total revenue for the order
+
+Steps Performed:
+Load CSV using pandas.read_csv()
+Basic exploration:
+.head() to preview data
+.nfo() for column details
+.describe() for summary statistics
+.shape for dimensions
+Missing value check using .isnull().sum()
+
+Groupby analysis:
+Group by Category and calculate total Revenue
+
+Filtering:
+Select rows where Revenue > 500
+
+Indexing:
+loc[] vs iloc[] examples
+
+Visualizations:
+Bar Chart: Revenue by Category
+Line Chart: Quantity sold over time
+
+
+Key Concepts Covered:
+Pandas DataFrame operations
+CSV loading and exploration
+groupby() and sum()
+Data filtering
+.loc[] vs .iloc[]
+.head() usage
+Visualization with plot()
+Handling missing values
+
+How to Run the Notebook in Colab:
+Open Google Colab.
+Create a new notebook.
+Upload sales_data.csv when prompted by the code.
+Run all cells to generate results and charts.
+Download .ipynb and push it to GitHub.
+
+Example Charts:
+Bar Chart – Revenue by Category
+X-axis: Category
+Y-axis: Total Revenue
+Shows which category earned the most revenue.
+Line Chart – Quantity Sold Over Time
+X-axis: Date
+Y-axis: Quantity Sold per Day
+Shows trends in sales volume.
+
+
